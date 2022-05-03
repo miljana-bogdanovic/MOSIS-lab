@@ -1,0 +1,25 @@
+<resources>
+    <string name="app_name">My Places</string>
+    <string name="action_settings">Settings</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="first_fragment_label">First Fragment</string>
+    <string name="second_fragment_label">Second Fragment</string>
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+
+    <string name="hello_first_fragment">Hello first fragment</string>
+    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+
+    <string name="show_map">Show Map</string>
+    <string name="new_place">New Place</string>
+    <string name="my_places_list">My Places</string>
+    <string name="about">About</string>
+
+    <string name="about_text">
+        <i>My Places</i> is an application that will help you remember characteristics and locations of your favorite places.
+        It will be able to show your places on the map and enable you to share them with your friends.
+        Each week this application will become better and better and with that you will earn <i>points</i> from your teaching assistant.
+    </string>
+    <string name="about_ok">Ok</string>
+    <string name="title_activity_my_places_list">MyPlacesList</string>
+</resources>
