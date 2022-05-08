@@ -54,7 +54,7 @@ class EditMyPlaceActivity : AppCompatActivity(), View.OnClickListener {
         findViewById<Button>(R.id.editmyplace_cancel_button).setOnClickListener(this)
         val finishButton = findViewById<Button>(R.id.editmyplace_finish_button).apply {
             setOnClickListener(this@EditMyPlaceActivity)
-            isEnabled = !editMode
+            isEnabled = editMode
             text = if (editMode) "Save" else "Add"
         }
 
