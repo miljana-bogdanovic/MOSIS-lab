@@ -22,4 +22,13 @@
     </string>
     <string name="about_ok">Ok</string>
     <string name="title_activity_my_places_list">MyPlacesList</string>
+    <string name="title_activity_edit_my_place">EditMyPlaceActivity</string>
+
+    <string name="editmyplace_name_label">Name:</string>
+    <string name="editmyplace_desc_label">Description:</string>
+    <string name="editmyplace_finish_button_text">Finish</string>
+    <string name="editmyplace_cancel_button_text">Cancel</string>
+    <string name="title_activity_view_my_places">ViewMyPlacesActivity</string>
+    <string name="viewmyplace_finished_button">OK</string>
+
 </resources>
