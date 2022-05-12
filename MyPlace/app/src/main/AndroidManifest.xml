@@ -10,16 +10,6 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MyPlace">
         <activity
-            android:name=".MyPlacesList"
-            android:exported="false"
-            android:label="@string/title_activity_my_places_list"
-            android:theme="@style/Theme.MyPlace.NoActionBar"
-            android:parentActivityName=".MainActivity">
-        <meta-data
-            android:name="android.support.PARENT_ACTIVITY"
-            android:value=".MainActivity" />
-        </activity>
-        <activity
             android:name=".MainActivity"
             android:exported="true"
             android:label="@string/app_name"

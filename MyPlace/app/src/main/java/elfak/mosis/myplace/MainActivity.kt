@@ -11,6 +11,7 @@ import androidx.navigation.ui.setupActionBarWithNavController
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.Toast
+import androidx.navigation.fragment.findNavController
 import elfak.mosis.myplace.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
@@ -36,31 +37,6 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    override fun onCreateOptionsMenu(menu: Menu): Boolean {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        menuInflater.inflate(R.menu.menu_main, menu)
-        return true
-    }
-
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-         when (item.itemId) {
-            R.id.action_show_map -> Toast.makeText(this, "Show map!", Toast.LENGTH_SHORT).show()
-             R.id.action_new_place -> Toast.makeText(this, "New place!", Toast.LENGTH_SHORT).show()
-             R.id.action_my_places_list -> {
-                 val i: Intent = Intent(this, MyPlacesList::class.java)
-                 startActivity(i)
-             }
-             R.id.action_about -> {
-                 val i: Intent = Intent(this, About::class.java)
-                 startActivity(i)
-             }
-
-        }
-        return super.onOptionsItemSelected(item)
-    }
 
     override fun onSupportNavigateUp(): Boolean {
         val navController = findNavController(R.id.nav_host_fragment_content_main)
