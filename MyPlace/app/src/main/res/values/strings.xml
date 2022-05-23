@@ -16,9 +16,8 @@
     <string name="about_text">
         <i>My Places</i> neki dugacak tekst.
     </string>
-    <string name="ok">Ok</string>
+    <string name="ok">OK</string>
     <string name="title_activity_my_places_list">MyPlacesList</string>
-    <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="editmyplace_name_label">Name</string>
     <string name="editmyplace_desc_label">Description</string>
@@ -27,4 +26,6 @@
     <string name="edit_fragment_label">Edit Fragment</string>
     <string name="home_fragment_label">Home fragment</string>
     <string name="list_fragment_label">List fragment</string>
+    <string name="viewmyplace_finished_label">Close</string>
+    <string name="editmyplace_save_label">Save</string>
 </resources>
