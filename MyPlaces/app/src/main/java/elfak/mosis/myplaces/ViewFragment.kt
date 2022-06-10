@@ -36,7 +36,7 @@ class ViewFragment : Fragment() {
         binding.viewmyplaceDescText.text = myPlacesViewModel.selected!!.description
 
         binding.viewmyplaceFinishButton.setOnClickListener {
-            this.findNavController().navigate(R.id.action_ViewFragment_to_ListFragment)
+            this.findNavController().popBackStack()
         }
     }
 

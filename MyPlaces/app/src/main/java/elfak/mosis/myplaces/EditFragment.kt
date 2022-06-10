@@ -25,32 +25,12 @@ class EditFragment : Fragment() {
         setHasOptionsMenu(true)
     }
 
-    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
-        inflater.inflate(R.menu.menu_main, menu)
-    }
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_edit, container, false)
-    }
-
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        return when (item.itemId) {
-            R.id.action_my_places_list -> {
-                this.findNavController().navigate(R.id.action_EditFragment_to_ListFragment)
-                true
-            }
-            else -> super.onOptionsItemSelected(item)
-        }
-    }
-
-    override fun onPrepareOptionsMenu(menu: Menu) {
-        super.onPrepareOptionsMenu(menu)
-        val item = menu.findItem(R.id.action_new_place)
-        item.isVisible = false
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -70,7 +50,7 @@ class EditFragment : Fragment() {
                     myPlacesViewModel.selected!!.description = desc
                 } else
                     myPlacesViewModel.addPlace(MyPlace(name, desc))
-                findNavController().navigate(R.id.action_EditFragment_to_ListFragment)
+                findNavController().popBackStack()
             }
             isEnabled = false
         }
@@ -84,7 +64,7 @@ class EditFragment : Fragment() {
             (activity as AppCompatActivity).supportActionBar?.title = "Add New Place"
 
         cancelButton.setOnClickListener {
-            findNavController().navigate(R.id.action_EditFragment_to_ListFragment)
+            findNavController().popBackStack()
         }
 
         val txtWatcher = object : TextWatcher {
