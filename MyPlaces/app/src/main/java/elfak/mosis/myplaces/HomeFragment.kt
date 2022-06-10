@@ -13,9 +13,6 @@ import elfak.mosis.myplaces.databinding.FragmentHomeBinding
 class HomeFragment : Fragment() {
 
     private var _binding: FragmentHomeBinding? = null
-
-    // This property is only valid between onCreateView and
-    // onDestroyView.
     private val binding get() = _binding!!
 
     override fun onCreateView(
@@ -26,10 +23,6 @@ class HomeFragment : Fragment() {
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
         return binding.root
 
-    }
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
     }
 
     override fun onDestroyView() {
@@ -44,20 +37,5 @@ class HomeFragment : Fragment() {
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         inflater.inflate(R.menu.menu_main, menu)
-    }
-
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        return when (item.itemId) {
-            R.id.action_my_places_list -> {
-                findNavController().navigate(R.id.action_HomeFragment_to_ListFragment)
-                true
-            }
-            R.id.action_new_place -> {
-                Log.d("HERE", this.findNavController().currentDestination.toString())
-                findNavController().navigate(R.id.action_HomeFragment_to_EditFragment)
-                true
-            }
-            else -> super.onOptionsItemSelected(item)
-        }
     }
 }

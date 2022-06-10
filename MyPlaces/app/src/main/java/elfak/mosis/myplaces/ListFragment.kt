@@ -53,6 +53,7 @@ class ListFragment : Fragment() {
             menu.add(0, 1, 1, R.string.view_fragment_label)
             menu.add(0, 2, 2, R.string.edit_fragment_label)
             menu.add(0, 3, 3, R.string.delete_place_label)
+            menu.add(0, 4, 4, R.string.show_on_map)
         }
     }
 
@@ -70,7 +71,13 @@ class ListFragment : Fragment() {
             }
             3 -> {
                 val deleted = myPlacesViewModel.myPlacesList.removeAt(info.position)
-                Toast.makeText(this.context, "Deleted $deleted", Toast.LENGTH_SHORT).show()
+                requireView().findViewById<ListView>(R.id.my_places_list).adapter = this@ListFragment.context?.let{
+                    ArrayAdapter<MyPlace>(it, android.R.layout.simple_list_item_1, myPlacesViewModel.myPlacesList)
+                }
+            }
+            4 -> {
+                myPlacesViewModel.selected = myPlacesViewModel.myPlacesList[info.position]
+                this.findNavController().navigate(R.id.action_ListFragment_to_MapFragment)
             }
         }
         return super.onContextItemSelected(item)
@@ -92,6 +99,10 @@ class ListFragment : Fragment() {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
+            R.id.action_show_map -> {
+                findNavController().navigate(R.id.action_ListFragment_to_MapFragment)
+                true
+            }
             R.id.action_new_place -> {
                 this.findNavController().navigate(R.id.action_ListFragment_to_EditFragment)
                 true

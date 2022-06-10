@@ -34,4 +34,11 @@
     <string name="viewmyplace_name_label">Name: </string>
     <string name="view_fragment_label">View My Place</string>
     <string name="delete_place_label">Delete place</string>
+    <string name="map_fragment_label">Map</string>
+    <string name="editmyplace_longitude_label">Longitude:</string>
+    <string name="editmyplace_latitude_label">Latitude:</string>
+    <string name="editmyplace_button_set_coordinates">Set</string>
+    <string name="viewmyplace_latitude_label">Latitude:</string>
+    <string name="viewmyplace_longitude_label">Longitude:</string>
+    <string name="show_on_map">Show on map</string>
 </resources>

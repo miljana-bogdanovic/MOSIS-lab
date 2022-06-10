@@ -11,14 +11,17 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
+import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import elfak.mosis.myplaces.data.MyPlace
+import elfak.mosis.myplaces.model.LocationViewModel
 import elfak.mosis.myplaces.model.MyPlacesViewModel
 
 class EditFragment : Fragment() {
 
     private val myPlacesViewModel: MyPlacesViewModel by activityViewModels()
+    private val locationViewModel: LocationViewModel by activityViewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -38,18 +41,35 @@ class EditFragment : Fragment() {
 
         val editName: EditText = requireView().findViewById(R.id.editmyplace_name_edit)
         val editDesc: EditText = requireView().findViewById(R.id.editmyplace_description_edit)
+        val editLongitude: EditText = requireView().findViewById(R.id.editmyplace_longitude_edit)
+        val editLatitude: EditText = requireView().findViewById(R.id.editmyplace_latitude_edit)
         val addButton: Button = requireView().findViewById(R.id.editmyplace_finish_button)
         val cancelButton: Button = requireView().findViewById(R.id.editmyplace_cancel_button)
+        val setButton: Button = requireView().findViewById(R.id.editmyplace_location_button)
+
+        val longitudeObs = Observer<String> {
+            editLongitude.setText(it)
+        }
+        val latitudeObs = Observer<String>{
+            editLatitude.setText(it)
+        }
+
+        locationViewModel.longitude.observe(viewLifecycleOwner, longitudeObs)
+        locationViewModel.latitude.observe(viewLifecycleOwner, latitudeObs)
 
         addButton.apply {
             setOnClickListener {
                 val name: String = editName.text.toString()
                 val desc: String = editDesc.text.toString()
+                val longitude = editLongitude.text.toString().toDouble()
+                val latitude = editLatitude.text.toString().toDouble()
                 if (myPlacesViewModel.editing) {
                     myPlacesViewModel.selected!!.name = name
                     myPlacesViewModel.selected!!.description = desc
+                    myPlacesViewModel.selected!!.longitude = longitude
+                    myPlacesViewModel.selected!!.latitude = latitude
                 } else
-                    myPlacesViewModel.addPlace(MyPlace(name, desc))
+                    myPlacesViewModel.addPlace(MyPlace(name, desc, longitude, latitude))
                 findNavController().popBackStack()
             }
             isEnabled = false
@@ -65,6 +85,11 @@ class EditFragment : Fragment() {
 
         cancelButton.setOnClickListener {
             findNavController().popBackStack()
+        }
+
+        setButton.setOnClickListener{
+            locationViewModel.setLocation = true
+            findNavController().navigate(R.id.action_EditFragment_to_MapFragment)
         }
 
         val txtWatcher = object : TextWatcher {
@@ -84,5 +109,6 @@ class EditFragment : Fragment() {
     override fun onDestroyView() {
         super.onDestroyView()
         myPlacesViewModel.editing = false
+        locationViewModel.setLocation("", "")
     }
 }

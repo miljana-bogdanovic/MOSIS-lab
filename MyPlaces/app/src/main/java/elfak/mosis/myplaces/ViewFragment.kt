@@ -34,6 +34,8 @@ class ViewFragment : Fragment() {
 
         binding.viewmyplaceNameText.text = myPlacesViewModel.selected!!.name
         binding.viewmyplaceDescText.text = myPlacesViewModel.selected!!.description
+        binding.viewmyplaceLongitudeText.text = myPlacesViewModel.selected!!.longitude.toString()
+        binding.viewmyplaceLatitudeText.text = myPlacesViewModel.selected!!.latitude.toString()
 
         binding.viewmyplaceFinishButton.setOnClickListener {
             this.findNavController().popBackStack()
